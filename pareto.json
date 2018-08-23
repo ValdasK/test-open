@@ -1,0 +1,47 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "pareto",
+    "version" : "1.0.0"
+  },
+  "paths" : {
+    "/auth/login" : {
+      "post" : {
+        "summary" : "Creates authentication token for registered user",
+        "description" : "\n",
+        "parameters" : [ {
+          "name" : "123",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : { }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : {
+                  "aa" : {
+                    "value" : {
+                      "token" : "test"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
