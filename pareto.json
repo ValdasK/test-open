@@ -1,46 +1,52 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "pareto",
+    "title" : "Pareto REST",
+    "description" : "API design for UI communication with Pareto system.",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0"
+    },
     "version" : "1.0.0"
   },
   "paths" : {
-    "/auth/login" : {
-      "post" : {
-        "summary" : "Creates authentication token for registered user",
-        "description" : "\n",
-        "parameters" : [ {
-          "name" : "123",
-          "in" : "query",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : { }
-          },
-          "required" : true
-        },
+    "/hotels" : {
+      "get" : {
         "responses" : {
           "200" : {
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "string"
-                },
-                "examples" : {
-                  "aa" : {
-                    "value" : {
-                      "token" : "test"
-                    }
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Hotel"
                   }
                 }
               }
             }
           }
+        },
+        "security" : [ {
+          "JWT" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Hotel" : {
+        "required" : [ "name" ],
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
         }
+      }
+    },
+    "securitySchemes" : {
+      "JWT" : {
+        "type" : "http",
+        "scheme" : "bearer"
       }
     }
   }
